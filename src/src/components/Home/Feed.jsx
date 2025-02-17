@@ -2,7 +2,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import Post from "./Post";
-import Profile from '../StudentDashBoard'
+import Profile from '../StudentProfile'
 
 const Feed = () => {
   return (
