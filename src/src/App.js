@@ -1,17 +1,13 @@
-import Home from './components/Home'
-import JobDetails from './components/Job-Details/JobDetails';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import AddJob from './components/AddJob';
-import SignIn from './components/SignIn';
-import SignUp from './components/signup';
-import Hero from './components/FrontPage/Hero';
-import CompanyDash from './components/CompanyDash/CompanyDash';
-import StuEditProfile from './components/StudentEditProfile'
-import StudentEditProfile from './components/StudentEditProfile';
-// import JobDetails from './components/Job-Details/JobDetails';
+import Home from "./components/Home";
+import JobDetails from "./components/Job-Details/JobDetails";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AddJob from "./components/AddJob";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/signup";
+import Hero from "./components/FrontPage/Hero";
+import CompanyDash from "./components/CompanyDash/CompanyDash";
+import StudentEditProfile from "./components/StudentEditProfile";
+import Notification from "./components/notification/Notification";
 
 const router = createBrowserRouter([
   {
@@ -20,37 +16,42 @@ const router = createBrowserRouter([
     // errorElement: <ErrorPage />,
   },
   {
-    path: "/newjob",
-    element:<AddJob/>
+    path: "/company/newjob",
+    element: <AddJob />,
   },
   {
-    path: '/signin',
-    element: <SignIn/>
+    path: "/job-details",
+    element: <JobDetails />,
   },
   {
-    path: '/signup',
-    element: <SignUp/>
+    path: "/signin",
+    element: <SignIn />,
   },
   {
-    path: '/',
-    element: <Hero/>
+    path: "/signup",
+    element: <SignUp />,
   },
   {
-    path: '/company',
-    element: <CompanyDash/>
+    path: "/",
+    element: <Hero />,
   },
   {
-    path: '/student/profile',
-    element: <StuEditProfile />
+    path: "/company",
+    element: <CompanyDash />,
   },
   {
-    path: '/student/edit',
-    element: <StudentEditProfile />
+    path: "/student/edit",
+    element: <StudentEditProfile />,
+  },
+  {
+    path: "/company/notification",
+    element: <Notification />,
   },
   {
     path:'/organization/:id',
     element: <JobDetails/>
   }
+  
 ]);
 
 function App() {
