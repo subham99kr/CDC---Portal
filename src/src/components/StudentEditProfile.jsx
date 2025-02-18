@@ -46,14 +46,11 @@ const StudentEditProfile = () => {
       if (user) {
         setNewu(user.uid);
         const unsub = onSnapshot(doc(db, "student", user.uid), (doc) => {
-          if(doc.data()){
-            console.log(doc.data())
-            setuName(doc.data().name);
-            setuCgpa(doc.data().cgpa);
-            setuResm(doc.data().resumeLink);
-            setuRoll(doc.data().rollNo);
-            setSelectval(doc.data().type)
-          }
+          setuName(doc.data().name);
+          setuCgpa(doc.data().cgpa);
+          setuResm(doc.data().resumeLink);
+          setuRoll(doc.data().rollNo);
+          setSelectval(doc.data().type)
           // set
           // console.log("Current data: ", doc.data());
         });
@@ -73,7 +70,7 @@ const StudentEditProfile = () => {
       await setDoc(doc(db, "student", newu), {
         name: data.get("name"),
         rollNo: data.get("rollNo"),
-        cgpa: parseFloat(data.get("CGPA")),
+        cgpa: data.get("CGPA"),
         resumeLink: data.get("Resume"),
         branch: data.get("domains")
         // name: "chumitya",
@@ -151,7 +148,6 @@ const StudentEditProfile = () => {
           <input className={styles.Input}
             type="number"
             name="CGPA"
-            step="0.01"
             value = {ucgpa}
             onChange={(e)=>setuCgpa(e.target.value)}
             placeholder="Latest Semester CGPA"
