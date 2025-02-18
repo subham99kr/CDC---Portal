@@ -6,16 +6,17 @@ import logoImg from "../media/logo.png";
 import { Container } from "@mui/system";
 import CustomButton from "./CustomButton";
 import { useNavigate } from "react-router-dom";
-import { Button, Drawer, styled } from "@mui/material";
-import { useState } from "react";
 import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
+  Button,
+  Drawer,
+  styled,
+} from "@mui/material";
+import { useState } from "react";
+import { GoogleAuthProvider, signInWithPopup, signInWithRedirect } from "firebase/auth";
 import { auth } from "../../firebase";
 
 export const Navbar = () => {
+
   const navigate = useNavigate();
   const [mobileMenu, setMobileMenu] = useState({
     left: false,
@@ -23,27 +24,30 @@ export const Navbar = () => {
 
   const provider = new GoogleAuthProvider();
 
-  const recruiterLogin = () => {
-    const user = auth.currentUser;
-    if (user !== null && !user.email.includes("@iitism.ac.in")) {
-      navigate("/company");
-    } else {
-      signInWithPopup(auth, provider)
-        .then((result) => {
-          const user = result.user;
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
-          navigate("/company");
-        })
-        .catch((error) => {
-          // Handle Errors here.
-          const errorCode = error.code;
-          alert(error.message);
-          const credential = GoogleAuthProvider.credentialFromError(error);
-          // ...
-        });
-    }
-  };
+const recruiterLogin = () => {
+  const user = auth.currentUser;
+  if (user !== null && !user.email.includes("@iitism.ac.in")){
+    navigate('/company')
+  }
+  else{
+
+    signInWithPopup(auth, provider)
+    .then((result) => {
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+    navigate('/company');
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    alert(error.message);
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+}
+}
+
+
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -62,7 +66,8 @@ export const Navbar = () => {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    ></Box>
+    >
+    </Box>
   );
 
   const NavLink = styled(Typography)(({ theme }) => ({
@@ -99,7 +104,7 @@ export const Navbar = () => {
     alignItems: "center",
     justifyContent: "space-between",
     padding: theme.spacing(3),
-    // backgroundColor: "#beebe2",
+    // backgroundColor: "#beebe2", 
     // marhin: theme.spacing(3),
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(2),
@@ -111,7 +116,7 @@ export const Navbar = () => {
     [theme.breakpoints.down("md")]: {
       display: "none",
       hight: "2px",
-      width: "2px",
+      width: "2px"
     },
   }));
 
@@ -135,24 +140,19 @@ export const Navbar = () => {
             {list("left")}
           </Drawer>
           <NavbarLogo src={logoImg} alt="logo" />
-          <h2
-            className="preventTextSelection"
-            style={{
-              marginLeft: "20px",
-              fontWeight: "1000",
-              fontSize: "30px",
-            }}
-          >
-            Placements, IIT(ISM) DHANBAD
-          </h2>
+          <h2 style={{
+            marginLeft: '20px',
+            fontWeight: '1000',
+            fontSize: '30px'
+          }}>Placements, IIT(ISM) DHANBAD</h2>
         </Box>
-
+       
         {/* <NavbarLinksBox>
           <NavLink variant="body2">Student</NavLink>
           <NavLink variant="body2">Recruter</NavLink>
           <NavLink variant="body2">SCPT</NavLink>
         </NavbarLinksBox> */}
-        {/* <CustomButton
+          {/* <CustomButton
           backgroundColor="#0F1B4C"
           color="#fff"
           buttonText="Student"
@@ -183,32 +183,13 @@ export const Navbar = () => {
           color="#fff"
           buttonText="Register"
         /> */}
-        <Button
-          onClick={() => {
-            navigate("/signin");
-          }}
-          sx={{ bgcolor: "#0F1B4C" }}
-          variant="contained"
-        >
-          Students
-        </Button>
-        <Button
-          onClick={recruiterLogin}
-          sx={{ bgcolor: "#0F1B4C" }}
-          variant="contained"
-        >
-          Recruter
-        </Button>
-        <Button
-          onClick={() => {
-            console.log("running3");
-          }}
-          sx={{ bgcolor: "#0F1B4C" }}
-          variant="contained"
-        >
-          SCPT
-        </Button>
-        {/* <CustomButton
+        <Button onClick={()=>{navigate('/signin')}} sx={{bgcolor:"#0F1B4C"}}
+           variant="contained">Students</Button>
+        <Button onClick={recruiterLogin} sx={{bgcolor:"#0F1B4C"}} 
+           variant="contained">Recruter</Button>
+        <Button onClick={()=>{console.log("running3")}} sx={{bgcolor:"#0F1B4C"}}
+           variant="contained">SCPT</Button>
+                {/* <CustomButton
           onClick={()=>console.log("Hello")}
           backgroundColor="#0F1B4C"
           color="#fff"
@@ -224,6 +205,7 @@ export const Navbar = () => {
           color="#fff"
           buttonText="SCPT"
         /> */}
+
       </Box>
     </NavbarContainer>
   );
