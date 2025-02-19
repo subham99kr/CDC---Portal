@@ -23,9 +23,11 @@ import {
   Settings,
   Shop,
   Notifications,
-  Logout
+  Logout,
+  AddCircle,
+  Download
+
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -45,7 +47,7 @@ const Sidebar = () => {
   
   return (
     // <Box color="white" bgcolor="#2e323b" p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-    <Box color="white" bgcolor="#2e323b" p={3} sx={{ minWidth:"170px" , display: { xs: "none", sm: "block" } }}> 
+    <Box color="white" bgcolor="#2e323b" p={3} sx={{ minWidth:"190px" , display: { xs: "none", sm: "block" } }}> 
       {/* <Box sx={{ position: "fixed" }}> */}
       <Box sx={{ position: "fixed" }}>
         <Typography variant="h5" sx={{ color:"#4ba2b6"}}>Placement Cell</Typography>
@@ -88,35 +90,35 @@ const Sidebar = () => {
           :
           <>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#home">
+            <ListItemButton component="a" onClick={()=>{navigate("/company")}}>
               <ListItemIcon style={{color: "#4ba2b6"}}>
-                <Person />
+                <Dashboard />
               </ListItemIcon>
-              <ListItemText primary="Friends" />
+              <ListItemText primary="Dashboard" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#home">
+            <ListItemButton component="a" onClick={()=>{navigate("/company/newjob")}}>
               <ListItemIcon style={{color: "#4ba2b6"}}>
-                <Settings />
+                <AddCircle />
               </ListItemIcon>
-              <ListItemText primary="Settings" />
+              <ListItemText primary="Add new Job" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#home">
+            <ListItemButton component="a" onClick={()=>{navigate("/company/table")}}>
               <ListItemIcon style={{color: "#4ba2b6"}}>
-                <AccountBox />
+                <Download />
               </ListItemIcon>
-              <ListItemText primary="Profile" />
+              <ListItemText primary="Download Excel" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#home">
+            <ListItemButton component="a" onClick={()=>{navigate("/company/notification")}}>
               <ListItemIcon style={{color: "#4ba2b6"}}>
-                <ModeNight />
+                <Notifications />
               </ListItemIcon>
-              <Switch />
+              <ListItemText primary="Send Notification" />
             </ListItemButton>
           </ListItem>
           </>
