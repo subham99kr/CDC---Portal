@@ -9,6 +9,8 @@ import CompanyDash from "./components/CompanyDash/CompanyDash";
 import StudentEditProfile from "./components/StudentEditProfile";
 import Notification from "./components/notification/Notification";
 import StudentNotification from "./components/notification/StudentNotification";
+import Test from "./components/Test"
+import Table from "./components/Table/Table";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +43,7 @@ const router = createBrowserRouter([
     element: <CompanyDash />,
   },
   {
-    path: "/student/edit",
+    path: "/student/profile",
     element: <StudentEditProfile />,
   },
   {
@@ -53,8 +55,17 @@ const router = createBrowserRouter([
     element: <StudentNotification/>
   },
   {
+    path: "/company/table",
+    element: <Table />,
+  },
+
+  {
     path:'/organization/:id',
     element: <JobDetails/>
+  },
+  {
+    path:'/test',
+    element: <Test/>
   }
   
 ]);
