@@ -53,14 +53,4 @@ information/announcements directly to the registered students.
 ### Home Page
 <img src="./Screenshots/home.png">
 
-## Student Side Sections
-<img src="./Screenshots/student dash.png">
-<img src="./Screenshots/company profile.png">
-<img src="./Screenshots/student profile.png">
-<img src="./Screenshots/get notifications.png">
 
-## Recruiter Side Sections
-<img src="./Screenshots/company dash.png">
-<img src="./Screenshots/company add job.png">
-<img src="./Screenshots/view and download data.png">
-<img src="./Screenshots/notify applicants.png">
